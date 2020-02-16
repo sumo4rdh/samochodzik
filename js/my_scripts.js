@@ -40,7 +40,7 @@ const gasTank = () => {
   myCar.tank = 50;
 }
 const fillFromCanister = () => {
-  myCar.tank += 5;
+  if((myCar.tank < 45)  myCar.tank += 5;
 }
 
 
