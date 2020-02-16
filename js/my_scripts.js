@@ -13,6 +13,7 @@ let myCar = {
   tank: 30,
   y: 100,
   x: 100,
+  canister: 30,
   showName: function(){
     console.log('seiko');
   },
@@ -40,7 +41,10 @@ const gasTank = () => {
   myCar.tank = 50;
 }
 const fillFromCanister = () => {
-  if((myCar.tank < 45)  myCar.tank += 5;
+  if((myCar.tank < 45) && (myCar.canister > 5)){
+    myCar.tank += 5;
+    myCar.canister -= 5;
+  }
 }
 
 
