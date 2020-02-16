@@ -52,7 +52,7 @@ const carReposition = (positionChangeX, positionChangeY, rotation) => {
   }
 }
 carReposition(0, 0, leftCar);
-
+// first car reposition
 
 
 const keyboard = (e) => {
