@@ -3,6 +3,7 @@ const down = document.getElementById("down");
 const left = document.getElementById("left");
 const right = document.getElementById("right");
 const fuel = document.getElementById("fuel");
+const canister = document.getElementById("canister");
 const upCar = 90
 const downCar = 270
 const leftCar = 0
@@ -38,6 +39,10 @@ const gasTank = () => {
   if((myCar.x < 100 && myCar.x > 0) && (myCar.y < 100 && myCar.y > 0) )
   myCar.tank = 50;
 }
+const fillFromCanister = () => {
+  myCar.tank += 5;
+}
+
 
 const carReposition = (positionChangeX, positionChangeY, rotation) => {
   if (myCar.tank > 0){
@@ -68,4 +73,5 @@ up.addEventListener("click", () => {carReposition(0, -3, upCar)});
 down.addEventListener("click", () =>{carReposition(0, 3, downCar)});
 left.addEventListener("click", () =>{carReposition(-3, 0, leftCar)});
 right.addEventListener("click", () =>{carReposition(3, 0, rightCar)});
+canister.addEventListener("click", fillFromCanister);
 document.addEventListener("keydown", (e) =>{keyboard(e)});
