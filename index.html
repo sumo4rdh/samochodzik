@@ -1,63 +1,83 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>super hakerzy</h1>
-    <div id="chapter">
 
-        <h1>What's a "detached HEAD" in Git?</h1>
-<p>It might very well be that you'll never come across this "mysterious" state in your Git career. However, if you do one day, you'd probably like to know what a "detached HEAD" is - and how you might have arrived at that state.</p>
-<h3 id="chapter_understanding+how+%22checkout%22+works">Understanding how "checkout" works</h3>
-<p>With the "<strong>git checkout</strong>" command, you determine which revision of your project you want to work on. Git then places all of that revision's files in your working copy folder.</p>
-<p>Normally, you use a <em>branch name</em> to communicate with "git checkout":</p>
-<pre><code><span class="cli-prompt">$ git checkout development</span>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h1>super hakerzy</h1>
+  <div id="chapter">
+
+    <h1>What's a "detached HEAD" in Git?</h1>
+    <p>It might very well be that you'll never come across this "mysterious" state in your Git career. However, if you do one day, you'd probably like to know what a "detached HEAD" is - and how you might have arrived at that state.</p>
+    <h3 id="chapter_understanding+how+%22checkout%22+works">Understanding how "checkout" works</h3>
+    <p>With the "<strong>git checkout</strong>" command, you determine which revision of your project you want to work on. Git then places all of that revision's files in your working copy folder.</p>
+    <p>Normally, you use a <em>branch name</em> to communicate with "git checkout":</p>
+    <pre><code><span class="cli-prompt">$ git checkout development</span>
 </code></pre>
-<p>However, you <em>can</em> also provide the <em>SHA1 hash</em> of a specific commit instead:</p>
-<pre><code><span class="cli-prompt">$ git checkout 56a4e5c08</span>
+    <p>However, you <em>can</em> also provide the <em>SHA1 hash</em> of a specific commit instead:</p>
+    <pre><code><span class="cli-prompt">$ git checkout 56a4e5c08</span>
 Note: checking out '56a4e5c08'.
 
 You are in 'detached HEAD' state...
 </code></pre>
-<p>This exact state - when a specific <em>commit</em> is checked out instead of a <em>branch</em> - is what's called a "detached HEAD".</p>
-<figure><img alt="" src="https://www.git-tower.com/learn/media/pages/git/faq/detached-head-when-checkout-commit/-246760908-1581502717/01-checkout-branch-not-commit.png"></figure>
-<h3 id="chapter_the+problem+with+a+detached+head">The problem with a detached HEAD</h3>
-<p>The HEAD pointer in Git determines your current working revision (and thereby the files that are placed in your project's working directory). Normally, when checking out a proper branch name, Git automatically moves the HEAD pointer along when you create a new commit. You are automatically on the newest commit of the chosen branch.</p>
-<p>When you instead choose to check out a <em>commit hash</em>, Git won't do this for you. The consequence is that when you make changes and commit them, these <strong>changes do NOT belong to any branch</strong>.<br>
-This means they can easily get lost once you check out a different revision or branch: not being recorded in the context of a branch, you lack the possibility to access that state easily (unless you have a brilliant memory and can remember the commit hash of that new commit...).</p>
-<div class="incentive-download incentive-download--incentive_cheatpackage" data-incentive="incentive_cheatpackage">  <div class="incentive-download__image"><img src="https://www.git-tower.com/learn/assets/img/cheat-sheet-signup-thumb.png"></div>  <div class="incentive-download__text">    <h2>The Git Cheat Sheet</h2>    <p>No need to remember all those commands and parameters: get our popular "Git Cheat Sheet" - for free!</p>    <div class="incentive-download__button"><a class="button button--incentive_cheatpackage incentive-signup-button analytics--click">Download Now for Free</a></div>  </div></div>
-<p><br></p>
-<h3 id="chapter_when+a+detached+head+shows+up">When a detached HEAD shows up</h3>
-<p>There are a handful of situations where detached HEAD states are common:</p>
-<ul>
-<li><a href="https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/submodules#start">Submodules</a> are indeed checked out at specific commits instead of branches.</li>
-<li><a href="https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/rebase#start">Rebase</a> works by creating a <em>temporary</em> detached HEAD state while it runs.</li>
-</ul>
-<h3 id="chapter_where+a+detached+head+should+%3Cstrong%3Enot%3C%2Fstrong%3E+show+up">Where a detached HEAD should <strong>not</strong> show up</h3>
-<p>Additionally, another situation might spring to mind: what about going back in time to try out an older version of your project? For example in the context of a bug, you want to see how things worked in an older revision.</p>
-<p>This is a perfectly valid and common use case. However, you don't have to maneuver yourself into a detached HEAD state to deal with it. Instead, remember how simple and cheap the whole concept of branching is in Git: you can simply create a (temporary) branch and delete it once you're done.</p>
-<pre><code><span class="cli-prompt">$ git checkout -b test-branch 56a4e5c08</span>
+    <p>This exact state - when a specific <em>commit</em> is checked out instead of a <em>branch</em> - is what's called a "detached HEAD".</p>
+    <figure><img alt="" src="https://www.git-tower.com/learn/media/pages/git/faq/detached-head-when-checkout-commit/-246760908-1581502717/01-checkout-branch-not-commit.png"></figure>
+    <h3 id="chapter_the+problem+with+a+detached+head">The problem with a detached HEAD</h3>
+    <p>The HEAD pointer in Git determines your current working revision (and thereby the files that are placed in your project's working directory). Normally, when checking out a proper branch name, Git automatically moves the HEAD pointer along
+      when you create a new commit. You are automatically on the newest commit of the chosen branch.</p>
+    <p>When you instead choose to check out a <em>commit hash</em>, Git won't do this for you. The consequence is that when you make changes and commit them, these <strong>changes do NOT belong to any branch</strong>.<br>
+      This means they can easily get lost once you check out a different revision or branch: not being recorded in the context of a branch, you lack the possibility to access that state easily (unless you have a brilliant memory and can remember the
+      commit hash of that new commit...).</p>
+    <div class="incentive-download incentive-download--incentive_cheatpackage" data-incentive="incentive_cheatpackage">
+      <div class="incentive-download__image"><img src="https://www.git-tower.com/learn/assets/img/cheat-sheet-signup-thumb.png"></div>
+      <div class="incentive-download__text">
+        <h2>The Git Cheat Sheet</h2>
+        <p>No need to remember all those commands and parameters: get our popular "Git Cheat Sheet" - for free!</p>
+        <div class="incentive-download__button"><a class="button button--incentive_cheatpackage incentive-signup-button analytics--click">Download Now for Free</a></div>
+      </div>
+    </div>
+    <p><br></p>
+    <h3 id="chapter_when+a+detached+head+shows+up">When a detached HEAD shows up</h3>
+    <p>There are a handful of situations where detached HEAD states are common:</p>
+    <ul>
+      <li><a href="https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/submodules#start">Submodules</a> are indeed checked out at specific commits instead of branches.</li>
+      <li><a href="https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/rebase#start">Rebase</a> works by creating a <em>temporary</em> detached HEAD state while it runs.</li>
+    </ul>
+    <h3 id="chapter_where+a+detached+head+should+%3Cstrong%3Enot%3C%2Fstrong%3E+show+up">Where a detached HEAD should <strong>not</strong> show up</h3>
+    <p>Additionally, another situation might spring to mind: what about going back in time to try out an older version of your project? For example in the context of a bug, you want to see how things worked in an older revision.</p>
+    <p>This is a perfectly valid and common use case. However, you don't have to maneuver yourself into a detached HEAD state to deal with it. Instead, remember how simple and cheap the whole concept of branching is in Git: you can simply create a
+      (temporary) branch and delete it once you're done.</p>
+    <pre><code><span class="cli-prompt">$ git checkout -b test-branch 56a4e5c08</span>
 
 ...do your thing...
 
 $ git checkout master
 $ git branch -d test-branch
 </code></pre>
-<p><br></p>
-<div class="box concept">
-<h5>Tip</h5>
-<h4>Detached HEAD handling in Tower</h4>
-<p>In case you are using the <a href="https://www.git-tower.com/?utm_source=learn-website&amp;utm_campaign=git-faq&amp;utm_medium=easy-in-tower&amp;utm_content=detached-head" target="_blank">Tower Git client</a>, the app will prominently inform you when you're in a detached HEAD state. More importantly, Tower will also explicitly warn you in case you're trying to commit in such a state.
-</p><figure><img alt="" src="https://www.git-tower.com/learn/media/pages/git/faq/detached-head-when-checkout-commit/-909458037-1581502717/02-tower-detached-head.png"></figure><p></p>
-</div>
-<p><br></p>
-<h2>Learn More</h2>
-<ul>
-<li>Check out the chapters <a href="https://www.git-tower.com/learn/git/ebook/en/command-line/branching-merging/checkout#start">Checking Out a Local Branch</a> and <a href="https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/submodules#start">Submodules</a> in our free online book</li>
-<li>More <a href="https://www.git-tower.com/learn/git/faq">frequently asked questions</a> about Git &amp; version control</li>
-</ul>
-      </div>
-  </body>
+    <p><br></p>
+    <div class="box concept">
+      <h5>Tip</h5>
+      <h4>Detached HEAD handling in Tower</h4>
+      <p>In case you are using the <a href="https://www.git-tower.com/?utm_source=learn-website&amp;utm_campaign=git-faq&amp;utm_medium=easy-in-tower&amp;utm_content=detached-head" target="_blank">Tower Git client</a>, the app will prominently
+        inform you when you're in a detached HEAD state. More importantly, Tower will also explicitly warn you in case you're trying to commit in such a state.
+      </p>
+      <figure><img alt="" src="https://www.git-tower.com/learn/media/pages/git/faq/detached-head-when-checkout-commit/-909458037-1581502717/02-tower-detached-head.png"></figure>
+      <p></p>
+    </div>
+    <p><br></p>
+    <h2>Learn More</h2>
+    <ul>
+      <li>Check out the chapters <a href="https://www.git-tower.com/learn/git/ebook/en/command-line/branching-merging/checkout#start">Checking Out a Local Branch</a> and <a href="https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/submodules#start">Submodules</a>
+        in our free online book</li>
+      <li>More <a href="https://www.git-tower.com/learn/git/faq">frequently asked questions</a> about Git &amp; version control</li>
+    </ul>
+<script type="text/javascript" src="./js/my_scripts.js">
+
+</script>
+  </div>
+</body>
+
 </html>
