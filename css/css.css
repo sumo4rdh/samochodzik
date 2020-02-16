@@ -1,0 +1,21 @@
+body{
+  position: relative;
+}
+#car{
+  position: absolute;
+}
+.fuel{
+  height: 100px;
+  width: 100px;
+  background: yellowgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: fuel;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+@keyframes fuel {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
